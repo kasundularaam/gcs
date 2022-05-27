@@ -1,18 +1,29 @@
-import 'package:gcs/data/models/bank_person.dart';
-import 'package:gcs/data/models/recent_bank.dart';
+import 'package:http/http.dart' as http;
 
+import '../data_providers/data_provider.dart';
+import '../models/bank_person.dart';
 import '../models/bank_res.dart';
 import '../models/hospital.dart';
 import '../models/hospital_res.dart';
 import '../models/person.dart';
 import '../models/person_res.dart';
+import '../models/recent_bank.dart';
 import '../models/recent_hospital.dart';
+import '../models/recent_hospitals_res.dart';
 
 class HTTPServices {
   static Future<Person> getPerson({required String nic}) async {
     try {
-      final PersonRes personRes = PersonRes.fromMap({});
-      return personRes.person;
+      final res = await http.get(
+        Uri.parse(
+          DataProvider.personByNIC(nic),
+        ),
+      );
+      if (res.statusCode == 200) {
+        final PersonRes personRes = PersonRes.fromJson(res.body);
+        return personRes.person;
+      }
+      throw "Failed to load data";
     } catch (e) {
       throw e.toString();
     }
@@ -20,8 +31,18 @@ class HTTPServices {
 
   static Future<Hospital> getHospital({required String nic}) async {
     try {
-      final HospitalRes hospitalRes = HospitalRes.fromMap({});
-      return hospitalRes.hospital;
+      final res = await http.get(
+        Uri.parse(
+          DataProvider.hospitalByNIC(nic),
+        ),
+      );
+
+      if (res.statusCode == 200) {
+        final HospitalRes hospitalRes = HospitalRes.fromJson(res.body);
+
+        return hospitalRes.hospital;
+      }
+      throw "Failed to load data";
     } catch (e) {
       throw e.toString();
     }
@@ -29,8 +50,16 @@ class HTTPServices {
 
   static Future<Bank> getBank({required String nic}) async {
     try {
-      final BankRes bankRes = BankRes.fromMap({});
-      return bankRes.banks[0];
+      final res = await http.get(
+        Uri.parse(
+          DataProvider.bankByNIC(nic),
+        ),
+      );
+      if (res.statusCode == 200) {
+        final BankRes bankRes = BankRes.fromJson(res.body);
+        return bankRes.banks[0];
+      }
+      throw "Failed to load data";
     } catch (e) {
       throw e.toString();
     }
@@ -39,7 +68,17 @@ class HTTPServices {
   static Future<List<RecentHospital>> getRecentHospitals(
       {required String nic}) async {
     try {
-      return [];
+      final res = await http.get(
+        Uri.parse(
+          DataProvider.recentHospitals(nic),
+        ),
+      );
+      if (res.statusCode == 200) {
+        final RecentHospitalsRes recentHospitalsRes =
+            RecentHospitalsRes.fromJson(res.body);
+        return recentHospitalsRes.recentHospitals;
+      }
+      throw "Failed to load data";
     } catch (e) {
       throw e.toString();
     }

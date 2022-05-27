@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gcs/data/models/person.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../core/components/components.dart';
@@ -33,6 +34,7 @@ class _HomePageState extends State<HomePage> {
           return const LoadingView(title: "Home");
         }
         if (state is HomePageLoaded) {
+          final Person person = state.person;
           return Column(
             children: [
               Padding(
@@ -76,10 +78,56 @@ class _HomePageState extends State<HomePage> {
                   borderRadius:
                       BorderRadius.vertical(top: Radius.circular(5.w)),
                   child: Container(
-                      decoration: const BoxDecoration(
-                        color: AppColors.lightElv1,
-                      ),
-                      child: Center(child: nothing)),
+                    decoration: const BoxDecoration(
+                      color: AppColors.lightElv1,
+                    ),
+                    child: ListView(
+                      padding: EdgeInsets.symmetric(horizontal: 3.w),
+                      physics: const BouncingScrollPhysics(),
+                      children: [
+                        vSpacer(3),
+                        textD("Personal Details", 16, bold: true),
+                        vSpacer(2),
+                        Card(
+                          child: Padding(
+                            padding: EdgeInsets.all(3.w),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    textD("First name: ", 14, bold: true),
+                                    Expanded(
+                                        child: textD(person.firstName, 14)),
+                                  ],
+                                ),
+                                vSpacer(2),
+                                Row(
+                                  children: [
+                                    textD("Last name: ", 14, bold: true),
+                                    Expanded(child: textD(person.lastName, 14)),
+                                  ],
+                                ),
+                                vSpacer(2),
+                                Row(
+                                  children: [
+                                    textD("Date of birth: ", 14, bold: true),
+                                    Expanded(child: textD(person.dob, 14)),
+                                  ],
+                                ),
+                                vSpacer(2),
+                                Row(
+                                  children: [
+                                    textD("Gender: ", 14, bold: true),
+                                    Expanded(child: textD(person.gender, 14)),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               )
             ],

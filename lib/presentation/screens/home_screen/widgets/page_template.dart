@@ -29,10 +29,13 @@ class PageTemplate extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.vertical(top: Radius.circular(5.w)),
             child: Container(
-                decoration: const BoxDecoration(
-                  color: AppColors.lightElv1,
-                ),
-                child: Center(child: nothing)),
+              decoration: const BoxDecoration(
+                color: AppColors.lightElv1,
+              ),
+              child: Center(
+                child: child,
+              ),
+            ),
           ),
         )
       ],

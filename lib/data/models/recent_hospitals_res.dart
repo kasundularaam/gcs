@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'recent_hospital.dart';
 
 class RecentHospitalsRes {
-  final String success;
+  final bool success;
   final String message;
   final String errorType;
   final List<RecentHospital> recentHospitals;
@@ -17,7 +17,7 @@ class RecentHospitalsRes {
   });
 
   RecentHospitalsRes copyWith({
-    String? success,
+    bool? success,
     String? message,
     String? errorType,
     List<RecentHospital>? recentHospitals,
@@ -35,13 +35,13 @@ class RecentHospitalsRes {
       'success': success,
       'message': message,
       'errorType': errorType,
-      'data': recentHospitals.map((x) => x.toMap()).toList(),
+      'recentHospitals': recentHospitals.map((x) => x.toMap()).toList(),
     };
   }
 
   factory RecentHospitalsRes.fromMap(Map<String, dynamic> map) {
     return RecentHospitalsRes(
-      success: map['success'] ?? '',
+      success: map['success'] ?? false,
       message: map['message'] ?? '',
       errorType: map['errorType'] ?? '',
       recentHospitals: map['data'] != null

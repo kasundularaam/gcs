@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'hospital.dart';
 
 class HospitalRes {
-  final String success;
+  final bool success;
   final String message;
   final String errorType;
   final Hospital hospital;
@@ -15,7 +15,7 @@ class HospitalRes {
   });
 
   HospitalRes copyWith({
-    String? success,
+    bool? success,
     String? message,
     String? errorType,
     Hospital? hospital,
@@ -39,7 +39,7 @@ class HospitalRes {
 
   factory HospitalRes.fromMap(Map<String, dynamic> map) {
     return HospitalRes(
-      success: map['success'] ?? '',
+      success: map['success'] ?? false,
       message: map['message'] ?? '',
       errorType: map['errorType'] ?? '',
       hospital: map['data'] != null

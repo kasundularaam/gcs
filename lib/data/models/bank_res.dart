@@ -8,7 +8,7 @@ class BankRes {
   final bool success;
   final String message;
   final String errorType;
-  List<Bank> banks;
+  final List<Bank> banks;
   BankRes({
     required this.success,
     required this.message,

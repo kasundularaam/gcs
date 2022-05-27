@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
+  http: ^0.13.4
   shared_preferences: ^2.0.15
   sizer: ^2.0.15
 

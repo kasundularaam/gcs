@@ -9,7 +9,7 @@ class LandingCubit extends Cubit<LandingState> {
   Future loadApp() async {
     try {
       emit(LandingLoading());
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
       final bool isExist = await SharedServices.isUserIn();
       if (isExist) {
         emit(LandingToHome());

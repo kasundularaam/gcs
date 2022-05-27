@@ -4,4 +4,6 @@ class Strings {
 
   // HomeScreen
   static const homeScreenTitle = 'Home Screen';
+
+  static const profileImg = 'assets/images/profile.png';
 }

@@ -9,7 +9,7 @@ class AuthSubmitOtpCubit extends Cubit<AuthSubmitOtpState> {
   Future submit({required String otp}) async {
     try {
       emit(AuthSubmitOtpLoading());
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 2));
       await SharedServices.addUser(nic: "200129001050", uid: "001");
       emit(AuthSubmitOtpSucceed());
     } catch (e) {

@@ -1,46 +1,64 @@
 import 'dart:convert';
 
 class Person {
-  final String id;
-  final String name;
   final String nic;
-  final String phone;
+  final String firstName;
+  final String lastName;
+  final String dob;
+  final String address;
+  final String gender;
+  final String imageURL;
   Person({
-    required this.id,
-    required this.name,
     required this.nic,
-    required this.phone,
+    required this.firstName,
+    required this.lastName,
+    required this.dob,
+    required this.address,
+    required this.gender,
+    required this.imageURL,
   });
 
   Person copyWith({
-    String? id,
-    String? name,
     String? nic,
-    String? phone,
+    String? firstName,
+    String? lastName,
+    String? dob,
+    String? address,
+    String? gender,
+    String? imageURL,
   }) {
     return Person(
-      id: id ?? this.id,
-      name: name ?? this.name,
       nic: nic ?? this.nic,
-      phone: phone ?? this.phone,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      dob: dob ?? this.dob,
+      address: address ?? this.address,
+      gender: gender ?? this.gender,
+      imageURL: imageURL ?? this.imageURL,
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
-      'name': name,
       'nic': nic,
-      'phone': phone,
+      'firstName': firstName,
+      'lastName': lastName,
+      'dob': dob,
+      'address': address,
+      'gender': gender,
+      'imageURL': imageURL,
     };
   }
 
   factory Person.fromMap(Map<String, dynamic> map) {
     return Person(
-      id: map['id'] ?? '',
-      name: map['name'] ?? '',
       nic: map['nic'] ?? '',
-      phone: map['phone'] ?? '',
+      firstName: map['firstName'] ?? '',
+      lastName: map['lastName'] ?? '',
+      dob: map['dob'] ?? '',
+      address: map['address'] ?? '',
+      gender: map['gender'] ?? '',
+      imageURL: map['imageURL'] ?? '',
     );
   }
 
@@ -50,7 +68,7 @@ class Person {
 
   @override
   String toString() {
-    return 'Person(id: $id, name: $name, nic: $nic, phone: $phone)';
+    return 'Person(nic: $nic, firstName: $firstName, lastName: $lastName, dob: $dob, address: $address, gender: $gender, imageURL: $imageURL)';
   }
 
   @override
@@ -58,14 +76,23 @@ class Person {
     if (identical(this, other)) return true;
 
     return other is Person &&
-        other.id == id &&
-        other.name == name &&
         other.nic == nic &&
-        other.phone == phone;
+        other.firstName == firstName &&
+        other.lastName == lastName &&
+        other.dob == dob &&
+        other.address == address &&
+        other.gender == gender &&
+        other.imageURL == imageURL;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^ name.hashCode ^ nic.hashCode ^ phone.hashCode;
+    return nic.hashCode ^
+        firstName.hashCode ^
+        lastName.hashCode ^
+        dob.hashCode ^
+        address.hashCode ^
+        gender.hashCode ^
+        imageURL.hashCode;
   }
 }

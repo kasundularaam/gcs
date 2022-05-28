@@ -1,25 +1,25 @@
 import 'dart:convert';
 
 class RecentBank {
-  final int bankId;
+  final int bankID;
   final String bankName;
   final String bankType;
   final int accountNumber;
   RecentBank({
-    required this.bankId,
+    required this.bankID,
     required this.bankName,
     required this.bankType,
     required this.accountNumber,
   });
 
   RecentBank copyWith({
-    int? bankId,
+    int? bankID,
     String? bankName,
     String? bankType,
     int? accountNumber,
   }) {
     return RecentBank(
-      bankId: bankId ?? this.bankId,
+      bankID: bankID ?? this.bankID,
       bankName: bankName ?? this.bankName,
       bankType: bankType ?? this.bankType,
       accountNumber: accountNumber ?? this.accountNumber,
@@ -28,7 +28,7 @@ class RecentBank {
 
   Map<String, dynamic> toMap() {
     return {
-      'bankId': bankId,
+      'bankID': bankID,
       'bankName': bankName,
       'bankType': bankType,
       'accountNumber': accountNumber,
@@ -37,7 +37,7 @@ class RecentBank {
 
   factory RecentBank.fromMap(Map<String, dynamic> map) {
     return RecentBank(
-      bankId: map['bankId']?.toInt() ?? 0,
+      bankID: map['bankID']?.toInt() ?? 0,
       bankName: map['bankName'] ?? '',
       bankType: map['bankType'] ?? '',
       accountNumber: map['accountNumber']?.toInt() ?? 0,
@@ -51,7 +51,7 @@ class RecentBank {
 
   @override
   String toString() {
-    return 'RecentBank(bankId: $bankId, bankName: $bankName, bankType: $bankType, accountNumber: $accountNumber)';
+    return 'RecentBank(bankID: $bankID, bankName: $bankName, bankType: $bankType, accountNumber: $accountNumber)';
   }
 
   @override
@@ -59,7 +59,7 @@ class RecentBank {
     if (identical(this, other)) return true;
 
     return other is RecentBank &&
-        other.bankId == bankId &&
+        other.bankID == bankID &&
         other.bankName == bankName &&
         other.bankType == bankType &&
         other.accountNumber == accountNumber;
@@ -67,7 +67,7 @@ class RecentBank {
 
   @override
   int get hashCode {
-    return bankId.hashCode ^
+    return bankID.hashCode ^
         bankName.hashCode ^
         bankType.hashCode ^
         accountNumber.hashCode;

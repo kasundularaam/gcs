@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:gcs/data/models/recent_banks_res.dart';
 import 'package:http/http.dart' as http;
 
 import '../data_providers/data_provider.dart';
@@ -86,7 +89,18 @@ class HTTPServices {
 
   static Future<List<RecentBank>> getRecentBanks({required String nic}) async {
     try {
-      return [];
+      final res = await http.get(
+        Uri.parse(
+          DataProvider.recentBanks(nic),
+        ),
+      );
+      log(res.body);
+      if (res.statusCode == 200) {
+        final RecentBanksRes recentBanksRes = RecentBanksRes.fromJson(res.body);
+        log(recentBanksRes.recentBanks.toString());
+        return recentBanksRes.recentBanks;
+      }
+      throw "Failed to load data";
     } catch (e) {
       throw e.toString();
     }

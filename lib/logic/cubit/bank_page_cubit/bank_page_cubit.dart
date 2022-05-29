@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gcs/data/models/bank_person.dart';
 
 import '../../../data/http/http_services.dart';
+import '../../../data/models/bank_person.dart';
 import '../../../data/models/recent_bank.dart';
 import '../../../data/shared/shared_service.dart';
 

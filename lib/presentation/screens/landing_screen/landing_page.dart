@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gcs/core/components/components.dart';
-import 'package:gcs/presentation/router/app_router.dart';
 
+import '../../../core/components/components.dart';
 import '../../../logic/cubit/landing_cubit/landing_cubit.dart';
+import '../../router/app_router.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);

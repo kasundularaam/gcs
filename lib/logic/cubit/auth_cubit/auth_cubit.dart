@@ -1,12 +1,12 @@
 import 'dart:async';
-import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gcs/data/firebase/fire_auth.dart';
-import 'package:gcs/data/http/http_services.dart';
-import 'package:gcs/data/models/select_phone.dart';
-import 'package:gcs/data/shared/shared_service.dart';
+
+import '../../../data/firebase/fire_auth.dart';
+import '../../../data/http/http_services.dart';
+import '../../../data/models/select_phone.dart';
+import '../../../data/shared/shared_service.dart';
 
 part 'auth_state.dart';
 
@@ -21,7 +21,6 @@ class AuthCubit extends Cubit<AuthState> {
       emit(AuthLoading());
       final SelectPhone selectPhone = await HTTPServices.getPhone(nic: nic);
       final String phone = selectPhone.phoneNumber;
-      log(phone);
       if (phone.length == 12) {
         await FireAuth.varifyPhone(
             phone: phone,

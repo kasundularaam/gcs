@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gcs/data/models/person.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../core/components/components.dart';
 import '../../../../core/constants/strings.dart';
 import '../../../../core/themes/app_colors.dart';
+import '../../../../data/models/person.dart';
 import '../../../../logic/cubit/home_page_cubit/home_page_cubit.dart';
 import '../../../../logic/cubit/sign_out_cubit/sign_out_cubit.dart';
 import '../widgets/loading_view.dart';

@@ -1,6 +1,3 @@
-import 'package:gcs/data/models/recent_banks_res.dart';
-import 'package:gcs/data/models/select_phone.dart';
-import 'package:gcs/data/models/select_phone_res.dart';
 import 'package:http/http.dart' as http;
 
 import '../data_providers/data_provider.dart';
@@ -11,8 +8,11 @@ import '../models/hospital_res.dart';
 import '../models/person.dart';
 import '../models/person_res.dart';
 import '../models/recent_bank.dart';
+import '../models/recent_banks_res.dart';
 import '../models/recent_hospital.dart';
 import '../models/recent_hospitals_res.dart';
+import '../models/select_phone.dart';
+import '../models/select_phone_res.dart';
 
 class HTTPServices {
   static Future<Person> getPerson({required String nic}) async {

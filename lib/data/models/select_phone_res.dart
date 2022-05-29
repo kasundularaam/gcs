@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:gcs/data/models/select_phone.dart';
+import 'select_phone.dart';
 
 class SelectPhoneRes {
   final bool success;

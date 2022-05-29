@@ -1,13 +1,11 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gcs/core/themes/app_colors.dart';
-import 'package:gcs/data/models/hospital.dart';
-import 'package:gcs/data/models/recent_hospital.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../core/components/components.dart';
+import '../../../../core/themes/app_colors.dart';
+import '../../../../data/models/hospital.dart';
+import '../../../../data/models/recent_hospital.dart';
 import '../../../../logic/cubit/hospital_page_cubit/hospital_page_cubit.dart';
 import '../widgets/loading_view.dart';
 import '../widgets/page_template.dart';

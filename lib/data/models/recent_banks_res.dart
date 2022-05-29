@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
-import 'package:gcs/data/models/recent_bank.dart';
+import 'recent_bank.dart';
 
 class RecentBanksRes {
   final bool success;

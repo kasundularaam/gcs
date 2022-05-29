@@ -1,11 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gcs/core/components/components.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../core/components/components.dart';
 import '../../core/themes/app_colors.dart';
 import '../../logic/cubit/auth_cubit/auth_cubit.dart';
 import '../router/app_router.dart';
@@ -33,7 +31,6 @@ class _AuthPageState extends State<AuthPage> {
             height: 5.h,
           ),
           BlocConsumer<AuthCubit, AuthState>(listener: (context, state) {
-            log(state.toString());
             if (state is AuthFailed) {
               SnackBar snackBar = SnackBar(content: Text(state.errorMsg));
               ScaffoldMessenger.of(context).showSnackBar(snackBar);

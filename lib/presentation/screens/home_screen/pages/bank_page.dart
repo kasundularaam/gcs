@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gcs/data/models/bank_person.dart';
-import 'package:gcs/data/models/recent_banks_res.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../core/components/components.dart';
+import '../../../../data/models/bank_person.dart';
 import '../../../../data/models/recent_bank.dart';
 import '../../../../logic/cubit/bank_page_cubit/bank_page_cubit.dart';
 import '../widgets/loading_view.dart';

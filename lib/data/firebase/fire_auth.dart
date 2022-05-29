@@ -26,4 +26,25 @@ class FireAuth {
       throw e.toString();
     }
   }
+
+  static Future<AuthCredential> verifyOTP({
+    required String smsCode,
+    required String verificationId,
+  }) async {
+    try {
+      AuthCredential credential = PhoneAuthProvider.credential(
+          verificationId: verificationId, smsCode: smsCode);
+      return credential;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  static Future<void> signIn({required AuthCredential credential}) async {
+    try {
+      await auth.signInWithCredential(credential);
+    } catch (e) {
+      throw e.toString();
+    }
+  }
 }

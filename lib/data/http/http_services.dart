@@ -1,6 +1,6 @@
-import 'dart:developer';
-
 import 'package:gcs/data/models/recent_banks_res.dart';
+import 'package:gcs/data/models/select_phone.dart';
+import 'package:gcs/data/models/select_phone_res.dart';
 import 'package:http/http.dart' as http;
 
 import '../data_providers/data_provider.dart';
@@ -94,11 +94,26 @@ class HTTPServices {
           DataProvider.recentBanks(nic),
         ),
       );
-      log(res.body);
       if (res.statusCode == 200) {
         final RecentBanksRes recentBanksRes = RecentBanksRes.fromJson(res.body);
-        log(recentBanksRes.recentBanks.toString());
         return recentBanksRes.recentBanks;
+      }
+      throw "Failed to load data";
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  static Future<SelectPhone> getPhone({required String nic}) async {
+    try {
+      final res = await http.get(
+        Uri.parse(
+          DataProvider.phoneByNIC(nic),
+        ),
+      );
+      if (res.statusCode == 200) {
+        final SelectPhoneRes phoneRes = SelectPhoneRes.fromJson(res.body);
+        return phoneRes.phone;
       }
       throw "Failed to load data";
     } catch (e) {
